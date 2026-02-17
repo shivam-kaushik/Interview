@@ -28,7 +28,7 @@ An AI-powered mock interview platform that helps you practice for your next job 
    ```
 3. Create a `.env` file based on `.env.example`:
    ```
-   OPENAI_API_KEY=your_openai_api_key
+   APP_OPENAI_API_KEY=your_openai_api_key
    ```
 4. Run the development server:
    ```bash
@@ -38,7 +38,7 @@ An AI-powered mock interview platform that helps you practice for your next job 
 
 ## Environment Variables
 
-- `OPENAI_API_KEY` - Required for AI feedback generation
+- `APP_OPENAI_API_KEY` - Required for AI feedback generation
 - `UPSTASH_REDIS_REST_URL` - Optional, for rate limiting
 - `UPSTASH_REDIS_REST_TOKEN` - Optional, for rate limiting
 

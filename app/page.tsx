@@ -103,8 +103,7 @@ export default function Home() {
               }}
             >
               <Link
-                href="/demo"
-                target="_blank"
+                href="/interview"
                 className="group rounded-full pl-[8px] min-w-[180px] pr-4 py-2 text-[13px] font-semibold transition-all flex items-center justify-center bg-[#1E2B3A] text-white hover:[linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), #0D2247] no-underline flex gap-x-2  active:scale-95 scale-100 duration-75"
                 style={{
                   boxShadow:
@@ -122,18 +121,11 @@ export default function Home() {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth="2"
-                      d="M4.75 7.75C4.75 6.64543 5.64543 5.75 6.75 5.75H17.25C18.3546 5.75 19.25 6.64543 19.25 7.75V16.25C19.25 17.3546 18.3546 18.25 17.25 18.25H6.75C5.64543 18.25 4.75 17.3546 4.75 16.25V7.75Z"
-                    ></path>
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M5.5 6.5L12 12.25L18.5 6.5"
+                      d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"
                     ></path>
                   </svg>
                 </span>
-                Get Started
+                Start Real-Time Interview
               </Link>
             </motion.div>
             <motion.div
@@ -146,7 +138,7 @@ export default function Home() {
               }}
             >
               <Link
-                href="/demo"
+                href="/interview"
                 className="group rounded-full px-4 py-2 text-[13px] font-semibold transition-all flex items-center justify-center bg-[#f5f7f9] text-[#1E2B3A] no-underline active:scale-95 scale-100 duration-75"
                 style={{
                   boxShadow: "0 1px 1px #0c192714, 0 1px 3px #0c192724",

@@ -39,5 +39,5 @@ export default async function middleware(
 }
 
 export const config = {
-  matcher: ["/api/transcribe", "/api/generate"],
+  matcher: ["/api/transcribe", "/api/generate", "/api/conversation", "/api/text-to-speech"],
 };
