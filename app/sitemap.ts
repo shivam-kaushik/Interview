@@ -1,13 +1,14 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
   return [
     {
-      url: "https://demo.useliftoff.com",
+      url: baseUrl,
       lastModified: new Date(),
     },
     {
-      url: "https://demo.useliftoff.com/demo",
+      url: `${baseUrl}/demo`,
       lastModified: new Date(),
     },
   ];
