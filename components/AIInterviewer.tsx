@@ -14,11 +14,13 @@ export default function AIInterviewer({
   isProcessing,
 }: AIInterviewerProps) {
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6">
+    <div className="bg-[#1a1a1a] rounded-xl p-6 border border-gray-800">
       <div className="flex items-start space-x-4">
         {/* Interviewer avatar */}
         <div className="relative flex-shrink-0">
-          <div className="w-20 h-20 rounded-full overflow-hidden bg-gray-200">
+          <div className={`w-16 h-16 rounded-full overflow-hidden bg-gray-800 ring-2 ${
+            isSpeaking ? 'ring-blue-500 ring-offset-2 ring-offset-[#1a1a1a]' : 'ring-gray-700'
+          }`}>
             <img
               src={`/placeholders/${interviewer}.webp`}
               alt={interviewer}
@@ -28,7 +30,7 @@ export default function AIInterviewer({
           {/* Speaking indicator */}
           {isSpeaking && (
             <motion.div
-              className="absolute -bottom-1 -right-1 w-6 h-6 bg-[#407BBF] rounded-full flex items-center justify-center"
+              className="absolute -bottom-1 -right-1 w-5 h-5 bg-blue-500 rounded-full flex items-center justify-center"
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ duration: 0.5, repeat: Infinity }}
             >
@@ -39,7 +41,7 @@ export default function AIInterviewer({
           )}
           {/* Processing indicator */}
           {isProcessing && !isSpeaking && (
-            <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center">
+            <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-yellow-500 rounded-full flex items-center justify-center">
               <motion.div
                 className="w-3 h-3 border-2 border-white border-t-transparent rounded-full"
                 animate={{ rotate: 360 }}
@@ -50,12 +52,12 @@ export default function AIInterviewer({
         </div>
 
         {/* Question/Speech bubble */}
-        <div className="flex-1">
+        <div className="flex-1 min-w-0">
           <div className="flex items-center mb-2">
-            <span className="font-semibold text-[#1E2B3A]">{interviewer}</span>
-            <span className="ml-2 text-xs text-gray-500">Interviewer</span>
+            <span className="font-semibold text-white">{interviewer}</span>
+            <span className="ml-2 text-xs text-gray-500 px-2 py-0.5 bg-gray-800 rounded">Interviewer</span>
           </div>
-          <div className="bg-[#F2F3F5] rounded-lg rounded-tl-none p-4">
+          <div className="bg-[#252525] rounded-xl rounded-tl-sm p-4 border border-gray-700">
             {isProcessing && !currentQuestion ? (
               <div className="flex items-center space-x-2">
                 <motion.div
@@ -66,7 +68,7 @@ export default function AIInterviewer({
                   {[0, 1, 2].map((i) => (
                     <motion.div
                       key={i}
-                      className="w-2 h-2 bg-gray-400 rounded-full"
+                      className="w-2 h-2 bg-gray-500 rounded-full"
                       animate={{ y: [0, -5, 0] }}
                       transition={{
                         duration: 0.5,
@@ -79,7 +81,7 @@ export default function AIInterviewer({
                 <span className="text-sm text-gray-500">Thinking...</span>
               </div>
             ) : (
-              <p className="text-[#1E2B3A] leading-relaxed">
+              <p className="text-gray-200 leading-relaxed">
                 {currentQuestion || "Preparing your interview..."}
               </p>
             )}
@@ -89,18 +91,18 @@ export default function AIInterviewer({
 
       {/* Voice wave animation when speaking */}
       {isSpeaking && (
-        <div className="mt-4 flex items-center justify-center space-x-1">
-          {[...Array(20)].map((_, i) => (
+        <div className="mt-4 flex items-center justify-center space-x-0.5">
+          {[...Array(40)].map((_, i) => (
             <motion.div
               key={i}
-              className="w-1 bg-[#407BBF] rounded-full"
+              className="w-1 bg-blue-500 rounded-full"
               animate={{
-                height: [8, Math.random() * 24 + 8, 8],
+                height: [4, Math.random() * 20 + 8, 4],
               }}
               transition={{
-                duration: 0.3,
+                duration: 0.4,
                 repeat: Infinity,
-                delay: i * 0.05,
+                delay: i * 0.02,
               }}
             />
           ))}

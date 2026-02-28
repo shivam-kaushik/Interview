@@ -28,24 +28,25 @@ export default function TranscriptPanel({
   }, [messages, liveTranscript]);
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-4 h-full flex flex-col">
-      <div className="flex items-center justify-between mb-3">
-        <h3 className="font-semibold text-[#1E2B3A]">Transcript</h3>
+    <div className="flex flex-col h-full">
+      {/* Header */}
+      <div className="flex items-center justify-between p-4 border-b border-gray-800">
+        <h3 className="font-semibold text-white">Transcript</h3>
         {isListening && (
-          <div className="flex items-center text-sm text-green-600">
+          <div className="flex items-center text-sm text-green-400">
             <span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
             Listening...
           </div>
         )}
       </div>
 
+      {/* Messages */}
       <div
         ref={scrollRef}
-        className="flex-1 overflow-y-auto space-y-3 pr-2"
-        style={{ maxHeight: "200px" }}
+        className="flex-1 overflow-y-auto p-4 space-y-4"
       >
         {messages.length === 0 && !liveTranscript && (
-          <p className="text-gray-400 text-sm italic">
+          <p className="text-gray-500 text-sm italic text-center py-8">
             Your conversation will appear here...
           </p>
         )}
@@ -58,26 +59,37 @@ export default function TranscriptPanel({
             className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
           >
             <div
-              className={`max-w-[80%] rounded-lg p-3 ${
+              className={`max-w-[85%] rounded-2xl px-4 py-3 ${
                 message.role === "user"
-                  ? "bg-[#407BBF] text-white rounded-br-none"
-                  : "bg-[#F2F3F5] text-[#1E2B3A] rounded-bl-none"
+                  ? "bg-blue-600 text-white rounded-br-sm"
+                  : "bg-[#1a1a1a] text-gray-200 rounded-bl-sm border border-gray-700"
               }`}
             >
+              {message.role === "assistant" && (
+                <div className="flex items-center mb-1">
+                  <span className="text-xs text-gray-400">Interviewer</span>
+                </div>
+              )}
               <p className="text-sm leading-relaxed">{message.content}</p>
+              {message.timestamp && (
+                <p className={`text-xs mt-1 ${message.role === "user" ? "text-blue-200" : "text-gray-500"}`}>
+                  {new Date(message.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                </p>
+              )}
             </div>
           </motion.div>
         ))}
 
         {/* Live transcript (interim results) */}
-        {liveTranscript && (
+        {liveTranscript.trim() && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="flex justify-end"
           >
-            <div className="max-w-[80%] rounded-lg p-3 bg-[#407BBF]/70 text-white rounded-br-none">
-              <p className="text-sm leading-relaxed italic">{liveTranscript}</p>
+            <div className="max-w-[85%] rounded-2xl px-4 py-3 bg-blue-600/50 text-white rounded-br-sm border border-blue-500/50">
+              <p className="text-sm leading-relaxed">{liveTranscript}</p>
+              <p className="text-xs text-blue-300 mt-1">Speaking...</p>
             </div>
           </motion.div>
         )}
